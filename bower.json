@@ -1,0 +1,22 @@
+{
+  "name": "apogee.ui-forms",
+  "version": "0.0.1",
+  "main": [
+    "build/apogee.ui-forms.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "examples"
+  ],
+  "dependencies": {
+    "angular": "~1.3.15",
+    "angular-mocks": "~1.3.15",
+    "underscore": "~1.8.3"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.3"
+  }
+}

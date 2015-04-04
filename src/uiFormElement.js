@@ -12,6 +12,9 @@ function uiFormElement($compile, uiFormConfig) {
       var cPrefix = formCtrl.cPrefix;
 
       var inputOptions = scope.$eval(cAttrs.uiFormElement) || { model: cAttrs.uiFormElement };
+
+      if(!inputOptions.model) throw 'You must provide a field name for form-element';
+
       var defaultOptions = { validate: true };
       var options = angular.extend({}, defaultOptions, inputOptions);
       options.required = !_.isUndefined(cAttrs.required);
