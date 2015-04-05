@@ -3,8 +3,7 @@ describe('directive: ui-form-element', function () {
   var html = '<form ui-form><div ui-form-element="somefield">' +
     '<div sut ui-form-label ng-class="{ some: true }"><span ng-class="{ sub: true }"></span></div>' +
     '</div></form>';
-  
-  beforeEach(module('apogee.ui-forms'));
+
   beforeEach(compile.bind(this, html));
 
   it('sets correct for attribute', function () {
