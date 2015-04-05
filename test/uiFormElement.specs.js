@@ -1,14 +1,6 @@
 describe('directive: ui-form-element', function () {
-  var element, scope;
-  beforeEach(module('apogee.ui-forms'));
 
-  var compile = function(html){
-    inject(function($rootScope, $compile) {
-      scope = $rootScope.$new();
-      element = $compile(html)(scope);
-      scope.$digest();
-    });
-  };
+  beforeEach(module('apogee.ui-forms'));
 
   it('throws when no field is specified', function () {
     var html = '<form ui-form><div ui-form-element></div></form>';

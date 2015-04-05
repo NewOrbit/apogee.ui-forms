@@ -30,3 +30,17 @@ _.mockUniqueId = function(arr){
     return res;
   };
 };
+
+// basic setup
+var element, scope;
+var compile = function(html){
+  inject(function($rootScope, $compile) {
+    scope = $rootScope.$new();
+    element = $compile(html)(scope);
+    element = $(element).find('[sut]');
+
+    scope.$digest();
+  });
+};
+
+_.mockUniqueId(['some-id-111', 'some-id-222', 'some-id-333']);
