@@ -32,3 +32,7 @@ gulp.task('build_dev', function(){ return build(); });
 gulp.task('build_pro', function(){ return build(true); });
 
 gulp.task('build', ['build_dev', 'build_pro']);
+
+gulp.task('watch', ['build'], function(){
+    gulp.watch(sourceFiles, ['build']);
+});
