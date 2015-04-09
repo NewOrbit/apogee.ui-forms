@@ -24,7 +24,7 @@ function uiFormElement($compile, uiFormConfig) {
       var modelParts = options.model.split('.');
       var field = _.last(modelParts);
       var formFieldName = options.name || (field[0].toUpperCase() + field.substring(1));
-      var formModel = (modelParts.length > 1 ? _.first(model.split('.')) + '.' : '') +
+      var formModel = cPrefix + (modelParts.length > 1 ? _.first(model.split('.')) + '.' : '') +
                       'form.' + formFieldName;
 
       ctrl.options = options;
