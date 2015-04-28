@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    </head>
+    <body ng-app="app">
+      <div ng-controller='formController'>
+          <h2>Change Password</h2>
+
+          <form ui-form>
+            <fieldset>
+              <div ui-form-element="email" required>
+                  <label ui-form-label>Email</label>
+                  <input type="email" ui-form-input>
+              </div>
+
+              <div ui-form-element="oldPassword" required>
+                  <label ui-form-label>Old Password</label>
+                  <input type="password" ui-form-input>
+              </div>
+
+              <div ui-form-element="someField">
+                  <label ui-form-label>Not Required Number</label>
+                  <input type="number" ui-form-input>
+              </div>
+
+              <div ui-form-element="newPassword" required>
+                  <label ui-form-label>New Password</label>
+                  <input type="password" ui-form-input>
+              </div>
+
+              <div ui-form-element="confirmPassword" required>
+                  <label ui-form-label>Confirm New Password</label>
+                  <input type="password" ui-form-input>
+              </div>
+
+              <div class="pure-controls">
+                  <label></label>
+                  <button type="submit" class="pure-button pure-button-primary">Submit</button>
+              </div>
+            </fieldset>
+          </form>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+      <script src="../build/apogee.ui-forms.js"></script>
+      <script>
+        angular.module('app', ['apogee.ui-forms'])
+        .run(function(uiFormConfig){
+          uiFormConfig.form.class = 'pure-form pure-form-aligned';
+          uiFormConfig.element.class = 'pure-control-group';
+        })
+        .controller('formController', function(){
+
+        });
+      </script>
+    </body>
+</html>
