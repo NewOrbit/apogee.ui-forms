@@ -8,6 +8,7 @@ var concat = require('gulp-concat');
 var wrap = require('gulp-wrap');
 
 var sourceFiles = [
+  'src/utils.js',
   'src/uiForm*.js',
   'src/main.js',
   '!src/*.specs.js'
@@ -23,7 +24,7 @@ function build(min){
              .pipe(gulpIf(min, ngAnnotate({ add: true, single_quotes: true })))
              .pipe(sourcemaps.write())
              .pipe(gulpIf(min, uglify()))
-             .pipe(wrap('(function(){<%= contents %>})();'))
+             .pipe(wrap('(function(){\n<%= contents %>\n})();'))
              .pipe(gulp.dest('build'))
              ;
 }

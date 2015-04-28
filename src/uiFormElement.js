@@ -17,20 +17,20 @@ function uiFormElement($compile, uiFormConfig) {
 
       var defaultOptions = { validate: true };
       var options = angular.extend({}, defaultOptions, inputOptions);
-      options.required = !_.isUndefined(cAttrs.required);
+      options.required = !utils.isUndefined(cAttrs.required);
 
       var container = uiFormConfig.form.dataContainer;
       var model = cPrefix + (container ? container + '.' : '') + options.model;
       var modelParts = options.model.split('.');
-      var field = _.last(modelParts);
+      var field = utils.last(modelParts);
       var formFieldName = options.name || (field[0].toUpperCase() + field.substring(1));
-      var formModel = cPrefix + (modelParts.length > 1 ? _.first(model.split('.')) + '.' : '') +
+      var formModel = cPrefix + (modelParts.length > 1 ? utils.first(model.split('.')) + '.' : '') +
                       'form.' + formFieldName;
 
       ctrl.options = options;
       ctrl.model = model;
       ctrl.formFieldName = formFieldName;
-      ctrl.elementId = 'fe_' + _.uniqueId();
+      ctrl.elementId = 'fe_' + utils.uniqueId();
 
       if(uiFormConfig.element.class){
         cEl.addClass(uiFormConfig.element.class);
@@ -50,7 +50,7 @@ function uiFormElement($compile, uiFormConfig) {
           var containerEl = angular.element(uiFormConfig.element.templates.validation.container)
                                  .attr('ng-if', cPrefix + 'form.$submitted');
 
-          _.each(uiFormConfig.element.validators, function(v){
+          uiFormConfig.element.validators.forEach(function(v){
             containerEl.append(createEntry(v));
           });
           cEl.append(containerEl);
