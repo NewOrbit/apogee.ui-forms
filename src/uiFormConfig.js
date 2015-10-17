@@ -3,7 +3,7 @@ var uiFormConfig = {
     dataContainer: 'entity'
   },
   element: {
-    validators: ['required', 'email', 'number'],
+    validators: ['required', 'email', 'number', 'match'],
     templates: {
       validation: {
         container: '<span></span>',
@@ -13,7 +13,8 @@ var uiFormConfig = {
     messages: {
       required: 'This field is required',
       email: 'Invalid email format',
-      number: 'Invalid number format'
+      number: 'Invalid number format',
+      match: 'This field must match: '
     }
   }
 };

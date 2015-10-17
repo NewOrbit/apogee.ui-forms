@@ -6,6 +6,8 @@ function uiFormLabel($compile) {
     terminal: true,
     link: function (scope, cEl, cAttrs, formElCtrl) {
 
+      formElCtrl.label = cEl.text();
+
       cEl.attr('for', formElCtrl.elementId);
 
       cEl.removeAttr('ui-form-label');

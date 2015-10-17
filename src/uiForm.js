@@ -9,6 +9,7 @@ function uiForm($compile, uiFormConfig) {
       var cPrefix = controller ? controller + '.' : '';
 
       ctrl.controller = controller;
+      ctrl.elements = {};
       ctrl.cPrefix = cPrefix;
 
       cEl.attr('name', cPrefix + 'form');
@@ -21,6 +22,9 @@ function uiForm($compile, uiFormConfig) {
       }
 
       cEl.removeAttr('ui-form');
+
+      var c = uiFormConfig.form.dataContainer;
+      scope[c] = scope[c] || {};
       $compile(cEl)(scope);
 
       $transclude(function (clone) {

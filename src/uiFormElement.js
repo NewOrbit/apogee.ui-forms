@@ -17,7 +17,16 @@ function uiFormElement($compile, uiFormConfig) {
 
       var defaultOptions = { validate: true };
       var options = angular.extend({}, defaultOptions, inputOptions);
+      var messages = angular.copy(uiFormConfig.element.messages);
+
       options.required = !utils.isUndefined(cAttrs.required);
+      messages.required = cAttrs.required || messages.required;
+
+      if(cAttrs.match) {
+        var matchp = cAttrs.match.split(':');
+        options.match = matchp[0];
+        messages.match = matchp.splice(1).join() || messages.match;
+      }
 
       var container = uiFormConfig.form.dataContainer;
       var model = cPrefix + (container ? container + '.' : '') + options.model;
@@ -43,7 +52,7 @@ function uiFormElement($compile, uiFormConfig) {
 
           var createEntry = function (t){
             return angular.element(uiFormConfig.element.templates.validation.entry)
-                          .text(uiFormConfig.element.messages[t])
+                          .text(messages[t])
                           .attr('ng-if', formModel + '.$error.' + t);
           };
 
@@ -57,6 +66,8 @@ function uiFormElement($compile, uiFormConfig) {
 
           cEl.attr('ng-class', '{ invalid: ' + formModel + '.$invalid }');
       }
+
+      formCtrl.elements[options.model] = ctrl;
 
       cEl.removeAttr('ui-form-element');
       $compile(cEl)(scope);

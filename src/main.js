@@ -7,4 +7,6 @@ angular.module('apogee.ui-forms', [])
 
 .value('uiFormConfig', uiFormConfig)
 
+.directive('ngMatch', validator_match)
+
 ;

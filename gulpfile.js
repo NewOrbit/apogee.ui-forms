@@ -10,6 +10,7 @@ var wrap = require('gulp-wrap');
 var sourceFiles = [
   'src/utils.js',
   'src/uiForm*.js',
+  'src/validator.*.js',
   'src/main.js',
   '!src/*.specs.js'
 ];

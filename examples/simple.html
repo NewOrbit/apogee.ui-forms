@@ -14,7 +14,8 @@
                   <input type="email" ui-form-input>
               </div>
 
-              <div ui-form-element="oldPassword" required>
+              <div ui-form-element="oldPassword"
+                   required="Hey! enter old password.">
                   <label ui-form-label>Old Password</label>
                   <input type="password" ui-form-input>
               </div>
@@ -29,7 +30,9 @@
                   <input type="password" ui-form-input>
               </div>
 
-              <div ui-form-element="confirmPassword" required>
+              <div ui-form-element="confirmPassword"
+                   required
+                   match="newPassword: Confirm password must match new password">
                   <label ui-form-label>Confirm New Password</label>
                   <input type="password" ui-form-input>
               </div>
@@ -41,7 +44,7 @@
             </fieldset>
           </form>
       </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.js"></script>
       <script src="../build/apogee.ui-forms.js"></script>
       <script>
         angular.module('app', ['apogee.ui-forms'])
@@ -49,8 +52,10 @@
           uiFormConfig.form.class = 'pure-form pure-form-aligned';
           uiFormConfig.element.class = 'pure-control-group';
         })
-        .controller('formController', function(){
-
+        .controller('formController', function($scope){
+            $scope.submit = function () {
+                console.log($scope.entity);
+            }
         });
       </script>
     </body>
