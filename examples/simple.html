@@ -2,6 +2,9 @@
 <html lang="en">
     <head>
       <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+      <style>
+      .pure-control-group.required label:after { content: ' *'; color: tomato; }
+      </style>
     </head>
     <body ng-app="app">
       <div ng-controller='formController'>
@@ -11,6 +14,11 @@
             <fieldset>
               <div ui-form-element="email" required>
                   <label ui-form-label>Email</label>
+                  <input type="email" ui-form-input>
+              </div>
+
+              <div ui-form-element="{ model: 'email2', validate: false }" required>
+                  <label ui-form-label>Email (validation disabled)</label>
                   <input type="email" ui-form-input>
               </div>
 

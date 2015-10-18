@@ -45,11 +45,11 @@ function uiFormElement($compile, uiFormConfig) {
         cEl.addClass(uiFormConfig.element.class);
       }
 
-      if (options.validate) {
-          if (options.required) {
-              cEl.addClass('required');
-          }
+      if (options.required) {
+          cEl.addClass('required');
+      }
 
+      if (options.validate) {
           var createEntry = function (t){
             return angular.element(uiFormConfig.element.templates.validation.entry)
                           .text(messages[t])

@@ -1,12 +1,15 @@
 describe('directive: ui-form-label', function () {
 
-  var html = '<form ui-form><div ui-form-element="somefield">' +
-    '<div sut ui-form-label ng-class="{ some: true }"><span ng-class="{ sub: true }"></span></div>' +
-    '</div></form>';
+  var html =
+  '<form ui-form>' +
+    '<div ui-form-element="somefield">' +
+      '<div sut ui-form-label ng-class="{ some: true }"><span ng-class="{ sub: true }"></span></div>' +
+    '</div>' +
+  '</form>';
 
   beforeEach(compile.bind(this, html));
 
-  it('sets correct for attribute', function () {
+  it('sets correct `for` attribute', function () {
     expect(element.attr('for')).to.equal('fe_some-id-111');
   });
 
@@ -17,6 +20,11 @@ describe('directive: ui-form-label', function () {
   it('compiles sub elements', function () {
     var child = element.find('span');
     expect(child.hasClass('sub')).to.equal(true);
+  });
+
+  it('doesnt have original `attr` after compilation', function () {
+    compile(html);
+    expect(element.attr('ui-form-label')).to.equal(undefined);
   });
 
 });
