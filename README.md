@@ -1,4 +1,4 @@
-# apogee.ui-forms [![Build Status](https://travis-ci.org/NewOrbit/apogee.ui-forms.svg?branch=master)](https://travis-ci.org/neworbit/apogee.ui-forms) [![Coverage Status](https://coveralls.io/repos/neworbit/apogee.ui-forms/badge.svg?branch=master)](https://coveralls.io/r/neworbit/apogee.ui-forms?branch=master)
+# apogee.ui-forms [![Build Status](https://travis-ci.org/NewOrbit/apogee.ui-forms.svg?branch=master)](https://travis-ci.org/neworbit/apogee.ui-forms) [![Coverage Status](https://coveralls.io/repos/NewOrbit/apogee.ui-forms/badge.svg?branch=master&service=github)](https://coveralls.io/github/NewOrbit/apogee.ui-forms?branch=master)
 
 An opinionated angular library to create awesome forms with minimal markups.
 
