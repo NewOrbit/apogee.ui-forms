@@ -63,8 +63,8 @@ function resetTo(obj, dest){
   angular.extend(obj, dest);
 }
 
+var originalUtils = angular.copy(utils);
 function mockUniqueId(arr){
-  utils._uniqueId = utils.uniqueId;
   var ix = 0;
   utils.uniqueId = function(){
     var res = arr[ix];

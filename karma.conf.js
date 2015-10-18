@@ -24,7 +24,8 @@ module.exports = function(config) {
       'src/validator*.js',
       'src/main.js',
       'test/common.js',
-      'test/uiForm*.js'
+      'test/uiForm*.js',
+      'test/utils*.js'
     ],
 
 
