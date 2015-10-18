@@ -24,8 +24,10 @@ function uiFormElement($compile, uiFormConfig) {
 
       if(cAttrs.match) {
         var matchp = cAttrs.match.split(':');
-        options.match = matchp[0];
-        messages.match = matchp.splice(1).join() || messages.match;
+        var fieldToMatch = matchp[0];
+        options.match = fieldToMatch;
+        messages.match = matchp.splice(1).join().trim() ||
+          (messages.match + ' \'{{ form.$labels.'+fieldToMatch+' }}\'');
       }
 
       var container = uiFormConfig.form.dataContainer;

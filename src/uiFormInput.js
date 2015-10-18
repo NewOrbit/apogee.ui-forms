@@ -20,7 +20,6 @@ function uiFormInput($compile) {
         var ref = m[0];
         var message = m.splice(1).join();
         var e = formCtrl.elements[ref];
-        console.log(e);
         if(e) {
           cEl.attr('ng-match', e.model);
         }

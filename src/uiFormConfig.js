@@ -14,7 +14,7 @@ var uiFormConfig = {
       required: 'This field is required',
       email: 'Invalid email format',
       number: 'Invalid number format',
-      match: 'This field must match: '
+      match: 'This field must match'
     }
   }
 };

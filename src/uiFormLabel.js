@@ -6,7 +6,8 @@ function uiFormLabel($compile) {
     terminal: true,
     link: function (scope, cEl, cAttrs, formElCtrl) {
 
-      formElCtrl.label = cEl.text();
+      scope.form.$labels = scope.form.$labels || {};
+      scope.form.$labels[formElCtrl.options.model] = cEl.text();
 
       cEl.attr('for', formElCtrl.elementId);
 

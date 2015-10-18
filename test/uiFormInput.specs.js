@@ -127,7 +127,55 @@ describe('directive: ui-form-element', function () {
     }
 
     testCase('', 'This field is required');
-    testCase('some custom message', 'some custom message');
+    testCase('some custom required message', 'some custom required message');
+
+  });
+
+  // scenario:
+  // match form input with another
+  // .
+  describe('when valid: match with another field', function () {
+    function withElement(message, props) {
+      var html =
+      '<form ui-form>' +
+        '<div ui-form-element="foo">'+
+          '<label ui-form-label>foo label</label>' +
+          '<input type="text" ui-form-input value="aa" sut="otherField">'+
+        '</div>' +
+        '<div ui-form-element="bar" match=\'foo'+(message ? (': ' + message ) : '')+'\' sut="element">'+
+          '<input type="text" ui-form-input sut>'+
+        '</div>' +
+        '<button sut="submit" type="submit">Submit</button>' +
+      '</form>';
+
+      var config = {
+        element: {
+          templates: {
+            validation: {
+              container: '<span class="validation-container"></span>',
+            }
+          }
+        }
+      };
+
+      compile(html, config, { entity: props });
+    }
+
+    function testCase(message, expected) {
+      describe('when submitted, with message: \''+message+'\'', function () {
+        beforeEach(function () {
+          withElement(message, { foo: 'value', bar: 'value 2' });
+          suts.submit.click();
+        });
+
+        it('should have validation showed', function () {
+          expect(suts.element.children('.validation-container').text()).to.equal(expected);
+        });
+      });
+    }
+
+    testCase('', 'This field must match \'foo label\'');
+    testCase('some custom match message', 'some custom match message');
 
   });
 

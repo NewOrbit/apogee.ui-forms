@@ -75,11 +75,12 @@ function mockUniqueId(arr){
 
 // basic setup
 var element, rootElement, suts, scope;
-var compile = function(html, config){
+var compile = function(html, config, scopeExt){
   inject(function($rootScope, $compile, uiFormConfig) {
     if(config) _.deepExtend(uiFormConfig, config);
 
     scope = $rootScope.$new();
+    if(scopeExt) _.deepExtend(scope, scopeExt);
     rootElement = $($compile(html)(scope));
     suts = {};
     rootElement.find('[sut]').each(function (ix, el) {
