@@ -63,15 +63,15 @@ function resetTo(obj, dest){
   angular.extend(obj, dest);
 }
 
-_.mockUniqueId = function(arr){
-  _._uniqueId = _.uniqueId;
+function mockUniqueId(arr){
+  utils._uniqueId = utils.uniqueId;
   var ix = 0;
-  _.uniqueId = function(){
+  utils.uniqueId = function(){
     var res = arr[ix];
     ix ++;
     return res;
   };
-};
+}
 
 // basic setup
 var element, scope;
@@ -87,7 +87,7 @@ var compile = function(html, config){
   });
 };
 
-beforeEach(_.mockUniqueId.bind(this, ['some-id-111', 'some-id-222', 'some-id-333']));
+beforeEach(mockUniqueId.bind(this, ['some-id-111', 'some-id-222', 'some-id-333']));
 beforeEach(module('apogee.ui-forms'));
 
 var config = angular.copy(uiFormConfig);

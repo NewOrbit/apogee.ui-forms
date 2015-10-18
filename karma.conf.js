@@ -19,7 +19,9 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/jquery/dist/jquery.js',
+      'src/utils.js',
       'src/uiForm*.js',
+      'src/validator*.js',
       'src/main.js',
       'test/common.js',
       'test/uiForm*.js'

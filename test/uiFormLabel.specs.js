@@ -1,4 +1,4 @@
-describe('directive: ui-form-element', function () {
+describe('directive: ui-form-label', function () {
 
   var html = '<form ui-form><div ui-form-element="somefield">' +
     '<div sut ui-form-label ng-class="{ some: true }"><span ng-class="{ sub: true }"></span></div>' +
