@@ -1,4 +1,5 @@
 # apogee.ui-forms
+[![travis](https://travis-ci.org/NewOrbit/apogee.ui-forms.svg?branch=master)](https://travis-ci.org/NewOrbit/apogee.ui-forms)
 
 An opinionated angular library to create awesome forms with minimal markups.
 
