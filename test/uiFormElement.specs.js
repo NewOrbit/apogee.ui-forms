@@ -75,12 +75,31 @@ describe('directive: ui-form-element', function () {
     var html =
     '<form ui-form>' +
       '<div sut ui-form-element="{ model: \'someField\', validate: false }" required></div>' +
+      '<button sut="submit" type="submit">Submit</button>' +
     '</form>';
 
-    beforeEach(compile.bind(this, html));
+    beforeEach(compile.bind(this, html, {
+      element: {
+        templates: {
+          validation: {
+            container: '<span class="sut-validation-container"></span>',
+          }
+        }
+      }
+    }));
 
     it('should add `required` class to element', function () {
       expect(element.hasClass('required')).to.equal(true);
+    });
+
+    describe('when submitted', function () {
+      beforeEach(function () {
+        suts.submit.click();
+      });
+
+      it('should NOT add validators container', function () {
+        expect(element.children('span.sut-validation-container').length).to.equal(0);
+      });
     });
   });
 
