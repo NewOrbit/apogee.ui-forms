@@ -74,14 +74,20 @@ function mockUniqueId(arr){
 }
 
 // basic setup
-var element, scope;
+var element, rootElement, suts, scope;
 var compile = function(html, config){
   inject(function($rootScope, $compile, uiFormConfig) {
     if(config) _.deepExtend(uiFormConfig, config);
 
     scope = $rootScope.$new();
-    element = $compile(html)(scope);
-    element = $(element).find('[sut]').first();
+    rootElement = $($compile(html)(scope));
+    suts = {};
+    rootElement.find('[sut]').each(function (ix, el) {
+      el = $(el);
+      suts[el.attr('sut') || 'default'] = el;
+    });
+
+    element = suts.default;
 
     scope.$digest();
   });
