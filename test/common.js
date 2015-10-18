@@ -83,7 +83,7 @@ var compile = function(html, config, scopeExt){
     if(scopeExt) _.deepExtend(scope, scopeExt);
     rootElement = $($compile(html)(scope));
     suts = {};
-    rootElement.find('[sut]').each(function (ix, el) {
+    rootElement.find('[sut]').andSelf().each(function (ix, el) {
       el = $(el);
       suts[el.attr('sut') || 'default'] = el;
     });
