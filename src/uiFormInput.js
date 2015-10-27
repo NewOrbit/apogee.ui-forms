@@ -12,16 +12,18 @@ function uiFormInput($compile) {
       cEl.attr('name', formElCtrl.formFieldName);
       cEl.attr('ng-model', formElCtrl.model);
 
-      if (formElCtrl.options.required) {
-        cEl.attr('required', 'required');
-      }
-      if (formElCtrl.options.match) {
-        var m = formElCtrl.options.match.split(':');
-        var ref = m[0];
-        var message = m.splice(1).join();
-        var e = formCtrl.elements[ref];
-        if(e) {
-          cEl.attr('ng-match', e.model);
+      if(formElCtrl.options.validate) {
+        if (formElCtrl.options.required) {
+          cEl.attr('required', 'required');
+        }
+        if (formElCtrl.options.match) {
+          var m = formElCtrl.options.match.split(':');
+          var ref = m[0];
+          var message = m.splice(1).join();
+          var e = formCtrl.elements[ref];
+          if(e) {
+            cEl.attr('ng-match', e.model);
+          }
         }
       }
 

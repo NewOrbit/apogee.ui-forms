@@ -132,6 +132,33 @@ describe('directive: ui-form-element', function () {
   });
 
   // scenario:
+  // required form input but validation disabled
+  // .
+  describe('when valid: required', function () {
+    function withElement(message) {
+      var html =
+      '<form ui-form>' +
+        '<div ui-form-element="{ model: \'someField\', validate: false }" required sut="element">'+
+          '<input type="text" ui-form-input sut>'+
+        '</div>' +
+        '<button sut="submit" type="submit">Submit</button>' +
+      '</form>';
+
+      compile(html);
+    }
+
+    describe('basics', function () {
+      beforeEach(function () {
+        withElement();
+      });
+
+      it('should NOT have `required` attribute set', function () {
+        expect(element.attr('required')).to.be.empty;
+      });
+    });
+  });
+
+  // scenario:
   // match form input with another
   // .
   describe('when valid: match with another field', function () {
